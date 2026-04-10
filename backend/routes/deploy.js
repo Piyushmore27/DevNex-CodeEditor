@@ -13,7 +13,7 @@ function ghHeaders(token) {
   }
 }
 
-const DEFAULT_WORKFLOW = `name: DevFlow Deploy
+const DEFAULT_WORKFLOW = `name: DevNex Deploy
 on:
   push:
     branches: [ main ]
@@ -21,7 +21,7 @@ on:
     inputs:
       message:
         description: 'Deploy message'
-        default: 'Deploy via DevFlow AI'
+        default: 'Deploy via DevNex AI'
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -72,7 +72,7 @@ router.post('/trigger', auth, async (req, res) => {
 
     await axios.post(
       `https://api.github.com/repos/${owner}/${repo}/actions/workflows/deploy.yml/dispatches`,
-      { ref: branch, inputs: { message: 'Deploy triggered by DevFlow AI' } },
+      { ref: branch, inputs: { message: 'Deploy triggered by DevNex AI' } },
       ghHeaders(token)
     )
 
