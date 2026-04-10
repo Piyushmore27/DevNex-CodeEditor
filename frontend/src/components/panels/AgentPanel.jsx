@@ -26,7 +26,8 @@ export default function AgentPanel({ fileContent, fileName, filePath, openTabs, 
   const run = async (instr) => {
     const cmd = (instr || instruction).trim()
     if (!cmd || loading) return
-    if (!fileContent) { setError('Open a file in the editor first, then give the agent an instruction.'); return }
+    // console.log(fileContent);
+    // if (!fileContent) { setError('Open a file in the editor first, then give the agent an instruction.'); return }
 
     setInstruction(''); setLoading(true); setError(''); setLastAction(cmd)
     try {
