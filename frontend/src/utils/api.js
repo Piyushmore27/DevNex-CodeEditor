@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 // All requests go to /api → Vite proxies to http://localhost:5000
-const api = axios.create({ baseURL: '/api' })
+const api = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_URL
+})
 
 // Attach JWT token to every request
 api.interceptors.request.use(config => {
@@ -24,7 +26,7 @@ api.interceptors.response.use(
 )
 
 // ── Auth ──────────────────────────────────────────────────────────────────────
-export const loginWithGitHub = () => { window.location.href = '/api/auth/github' }
+export const loginWithGitHub = () => {window.location.href = `${import.meta.env.VITE_BACKEND_URL}/auth/github` }
 export const getMe           = ()  => api.get('/auth/me').then(r => r.data)
 
 // ── Repo ──────────────────────────────────────────────────────────────────────
