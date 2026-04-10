@@ -1,0 +1,37 @@
+name: Deploy to DevNex
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            PROJECT_ID=${{ github.run_id }}
+            APP_DIR=/opt/devnex/apps/$PROJECT_ID
+
+            rm -rf $APP_DIR
+            git clone https://github.com/${{ github.repository }} $APP_DIR
+
+            cd $APP_DIR
+
+            docker build -t app-$PROJECT_ID .
+
+            PORT=$(shuf -i 3000-4000 -n 1)
+
+            docker run -d -p $PORT:3000 --name app-$PROJECT_ID app-$PROJECT_ID
+
+            echo "App running on port $PORT"
