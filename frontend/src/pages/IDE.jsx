@@ -4,7 +4,8 @@ import {
   Github, LogOut, Zap, Shield, Rocket, GitPullRequest,
   Save, X, Bot, RefreshCw, FilePlus, FolderPlus, Upload,
   Loader2, ChevronRight, ChevronDown, Folder, FolderOpen,
-  Terminal, Eye, EyeOff, FolderGit2, Plus, Wand2, Play
+  Terminal, Eye, EyeOff, FolderGit2, Plus, Wand2, Play,
+  BoxIcon
 } from 'lucide-react'
 import AgentPanel      from '../components/panels/AgentPanel'
 import CoPilotPanel    from '../components/panels/CoPilotPanel'
@@ -12,6 +13,7 @@ import BugScannerPanel from '../components/panels/BugScannerPanel'
 import DeployPanel     from '../components/panels/DeployPanel'
 import PRReviewPanel   from '../components/panels/PRReviewPanel'
 import TerminalPanel   from '../components/panels/TerminalPanel'
+import SandboxPanel    from '../components/panels/SandboxPanel'
 import { connectRepo, getFileTree, getFile, saveFile, getMe } from '../utils/api'
 import { getLang, getFileColor, buildTree, TEMPLATES } from '../utils/constants'
 
@@ -23,6 +25,7 @@ const PANELS = [
   { id:'deploy',   icon:<Rocket size={14}/>,           label:'Deployment',  color:'text-blue-400' },
   { id:'pr',       icon:<GitPullRequest size={14}/>,   label:'PR Review',   color:'text-purple-400' },
   { id:'terminal', icon:<Terminal size={14}/>,         label:'Terminal',    color:'text-green' },
+  { id:'sandbox', icon:<BoxIcon size={14}/>,         label:'sandbox',    color:'text-red' },
 ]
 
 function FileIcon({ path, size=10 }) {
@@ -535,6 +538,7 @@ export default function IDE({ token, onLogout }) {
               {activePanel==='deploy'   && <DeployPanel owner={repo?.owner} repo={repo?.repo} branch={repo?.defaultBranch}/>}
               {activePanel==='pr'       && <PRReviewPanel owner={repo?.owner} repo={repo?.repo}/>}
               {activePanel==='terminal' && <TerminalPanel token={token}/>}
+              {activePanel==='sandbox'   && <SandboxPanel owner={repo?.owner} repo={repo?.repo} branch={repo?.defaultBranch} token={token}/>}
             </div>
           )}
         </div>
