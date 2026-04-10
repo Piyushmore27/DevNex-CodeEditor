@@ -320,7 +320,7 @@ export default function IDE({ token, onLogout }) {
             style={{background:'linear-gradient(135deg,#238636,#1a7f37)',boxShadow:'0 0 10px rgba(63,185,80,0.35)'}}>
             <Zap size={14} color="#fff" fill="#fff"/>
           </div>
-          <span className="font-bold text-sm hidden sm:block">DevFlow <span className="text-green">AI</span></span>
+          <span className="font-bold text-sm hidden sm:block">DevNex Code <span className="text-green">-Editor</span></span>
         </div>
 
         <div className="w-px h-5 bg-border mx-1 hidden sm:block"/>
@@ -491,7 +491,7 @@ export default function IDE({ token, onLogout }) {
                     <Zap size={24} color="#fff" fill="#fff"/>
                   </div>
                   <div>
-                    <h2 className="text-lg font-bold mb-2">DevFlow AI Editor</h2>
+                    <h2 className="text-lg font-bold mb-2">DevNex Code-Editor</h2>
                     <p className="text-xs text-fg-muted leading-relaxed">Click <strong>"New Project"</strong> or connect a GitHub repo</p>
                   </div>
                   <div className="grid grid-cols-2 gap-2 w-full max-w-xs">
@@ -542,7 +542,7 @@ export default function IDE({ token, onLogout }) {
 
       {/* STATUS BAR */}
       <div className="flex items-center px-3 h-5 border-t border-border text-[10px] text-white shrink-0" style={{background:'#238636'}}>
-        <span className="font-semibold mr-2">DevFlow AI</span>
+        <span className="font-semibold mr-2">DevNex</span>
         {repo && <span className="opacity-75 mr-2">{repo.fullName}</span>}
         {activeTab && <span className="opacity-75 truncate max-w-48">{activeTab}</span>}
         {activeTabData?.unsaved && <span className="ml-2 text-yellow-300">● unsaved</span>}

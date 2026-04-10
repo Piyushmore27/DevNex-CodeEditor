@@ -55,7 +55,7 @@ function Message({ msg, onApplyCode }) {
 }
 
 export default function CoPilotPanel({ fileContent, fileName, onLoadFiles, onCreateFile, onApplyCode }) {
-  const [messages, setMessages] = useState([{ role:'assistant', content:'👋 Hi! I am DevFlow AI.\n\nAsk me anything about your code, or switch to **Generate** to create a full project.' }])
+  const [messages, setMessages] = useState([{ role:'assistant', content:'👋 Hi! I am DevNex Ai.\n\nAsk me anything about your code, or switch to **Generate** to create a full project.' }])
   const [input,      setInput]      = useState('')
   const [loading,    setLoading]    = useState(false)
   const [tab,        setTab]        = useState('chat')
