@@ -14,7 +14,11 @@ router.get('/github', (req, res) => {
   if (!CLIENT_ID) {
     return res.status(500).send('GITHUB_CLIENT_ID not set in .env')
   }
-  const url = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo,workflow,read:user`
+  
+  const redirectUri = `https://devnex-codeeditor.onrender.com/api/auth/callback`
+  
+  const url = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo,workflow,read:user&redirect_uri=${encodeURIComponent(redirectUri)}`
+  
   res.redirect(url)
 })
 
