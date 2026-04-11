@@ -8,6 +8,7 @@ const api = axios.create({
 // Attach JWT token to every request
 api.interceptors.request.use(config => {
   const token = localStorage.getItem('devflow_token')
+  console.log("ENV:", import.meta.env.VITE_BACKEND_URL)
   if (token) config.headers.Authorization = `Bearer ${token}`
   return config
 })

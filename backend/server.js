@@ -18,7 +18,7 @@ if (process.env.MONGODB_URI) {
 
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(cors({
-  origin:      process.env.CLIENT_URL || 'https://dev-nex-code-editor.vercel.app/',
+  origin:      process.env.CLIENT_URL || 'https://dev-nex-code-editor.vercel.app',
   credentials: true,
 }))
 app.use(express.json({ limit: '10mb' }))
